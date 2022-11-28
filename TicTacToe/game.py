@@ -1,6 +1,7 @@
  #* Importing libraries that are used in this game
 import pygame,json
 from TicTacToe.mouse import Mouse
+from TicTacToe.render import Rendering
 
 
  #* Main game class containing main loop for the game
@@ -21,6 +22,7 @@ class Game:
         self.grid_index = ['E','E','E','E','E','E','E','E','E']
         #* Who's turn it is | 0 = X| 1 = O| 
         self.turn = 0
+        self.render = Rendering(self.data["WIDTH"],self.data["HEIGHT"], self.screen)
     
     #* Event functions that checks for keyboard presses and manipulation with the game
     def events(self):
@@ -43,14 +45,16 @@ class Game:
                 elif self.turn%2 == 1 and self.grid_index[box] == 'E':
                     self.grid_index[box] = 'O'
                 else:
-                    print('This box is full')
+                    pass
                 self.turn += 1
-                print(self.grid_index)
+                pass
                 
     
     def Loop(self):
         while not self.quit:
             self.events()
+            self.render.drawGrid()
+            self.render.render_grid(self.grid_index)
             pygame.display.flip()
                 
                     

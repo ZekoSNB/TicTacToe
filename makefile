@@ -1,18 +1,18 @@
 all:
 clean:
-	find . -type f -name "*.pyc" -exec rm -f {} \;
-	find . -type d -name "__pycache__" -delete
-	find . -type d -name ".pytest_cache" -exec rm -rvf {} \;
-	find . -type d -name ".vscode" -exec rm -rvf {} \;
+	@find . -type f -name "*.pyc" -exec rm -f {} \;
+	@find . -type d -name "__pycache__" -delete
+	@find . -type d -name ".pytest_cache" -exec rm -rvf {} \;
+	@find . -type d -name ".vscode" -exec rm -rvf {} \;
 
 up:
-	find . -type f -name "*.pyc" -exec rm -f {} \;
-	find . -type d -name "__pycache__" -delete
-	find . -type d -name ".pytest_cache" -exec rm -rvf {} \;
-	find . -type d -name ".vscode" -exec rm -rvf {} \;
-	git add -A 
-	git commit -a -m "Updates"
-	git push
+	@find . -type f -name "*.pyc" -exec rm -f {} \;
+	@find . -type d -name "__pycache__" -delete
+	@find . -type d -name ".pytest_cache" -exec rm -rvf {} \;
+	@find . -type d -name ".vscode" -exec rm -rvf {} \;
+	@git add -A 
+	@git commit -a -m "Updates"
+	@git push
 
 run:
-	python run.py 
+	@python run.py 
