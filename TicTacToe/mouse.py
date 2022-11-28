@@ -6,6 +6,8 @@ class Mouse():
     
     def triggered(self,pos):
         self.mx,self.my = pos
-        if self.mx >= 0 and self.mx <= 300 and self.my >= 0 and self.my <= 300:
-            print("it is in the first box")
+        trigers_on = [[0,0,300,300],[300,0,600,300],[600,0,900,300],[0,300,300,600],[300,300,600,600],[600,300,900,600],[0,600,300,900],[300,600,600,900],[600,600,900,900]]
+        for i,item in enumerate(trigers_on):
+            if self.mx > item[0] and self.mx < item[2] and self.my > item[1] and self.my < item[3]:
+                return i
         
