@@ -24,6 +24,10 @@ class Game:
         self.turn = 0
         self.render = Rendering(self.data["WIDTH"],self.data["HEIGHT"], self.screen)
     
+    def restart(self):
+        self.grid_index = ['E','E','E','E','E','E','E','E','E']
+
+
     #* Event functions that checks for keyboard presses and manipulation with the game
     def events(self):
         for event in pygame.event.get():
@@ -34,6 +38,10 @@ class Game:
 
             #* Checks if the keyboard is pressed and which key to call function/change variable
             if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_r:
+                    self.restart()
+                    
+
                 if event.key == pygame.K_ESCAPE:
                     self.quit = True
 
@@ -52,14 +60,12 @@ class Game:
     
     def Loop(self):
         while not self.quit:
+            self.screen.fill((0,0,0))
             self.events()
+            #* Draws a grid to show places to put X or O
             self.render.drawGrid()
+            #* Renders players X or O
             self.render.render_grid(self.grid_index)
-            pygame.display.flip()
+            pygame.display.update()
                 
-                    
-
-
-
-
-    
+            
