@@ -24,9 +24,15 @@ class Game:
         self.turn = 0
         self.render = Rendering(self.data["WIDTH"],self.data["HEIGHT"], self.screen)
     
+    #* Resets data to default for a new game, but the game score is saved
     def restart(self):
         self.grid_index = ['E','E','E','E','E','E','E','E','E']
 
+    def check_win(self):
+        win_state = [[1,2,3],[4,5,6],[7,8,9], [1,4,7], [2,5,8],[3,6,9],[1,5,9],[3,5,7]]
+        for i in win_state:
+            if self.grid_index[i[0]-1] == self.grid_index[i[1]-1] and self.grid_index[i[1]-1] == self.grid_index[i[2]-1]:
+                print('idk')
 
     #* Event functions that checks for keyboard presses and manipulation with the game
     def events(self):
