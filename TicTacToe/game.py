@@ -31,8 +31,8 @@ class Game:
     def check_win(self):
         win_state = [[1,2,3],[4,5,6],[7,8,9], [1,4,7], [2,5,8],[3,6,9],[1,5,9],[3,5,7]]
         for i in win_state:
-            if self.grid_index[i[0]-1] == self.grid_index[i[1]-1] and self.grid_index[i[1]-1] == self.grid_index[i[2]-1]:
-                print('idk')
+            if self.grid_index[i[0]-1] == self.grid_index[i[1]-1] and self.grid_index[i[1]-1] == self.grid_index[i[2]-1] and self.grid_index[i[0]-1] != 'E':
+                print(f'{self.grid_index[i[0]]} - Wins the game')
 
     #* Event functions that checks for keyboard presses and manipulation with the game
     def events(self):
@@ -61,7 +61,7 @@ class Game:
                 else:
                     pass
                 self.turn += 1
-                pass
+                self.check_win()
                 
     
     def Loop(self):
