@@ -21,7 +21,7 @@ upco:
 	@find . -type d -name ".vscode" -exec rm -rvf {} \;
 	@git add -A 
 	@read -p "Enter comment: " comment; \
-	git commit -a -m "Updates"
+	git commit -a -m "$$comment"
 	@git push
 run:
 	@python run.py 

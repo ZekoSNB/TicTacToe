@@ -23,6 +23,7 @@ class Rendering:
                 pygame.draw.circle(self.screen, (255,255,255),((trigers_on[i][0]+trigers_on[i][2])/2, (trigers_on[i][1]+trigers_on[i][3])/2),140, 3)
 
     def render_win(self,pos_wi,i):
+        #TODO Not working line | Menu
         triggers_on = [[0,0,300,300],[300,0,600,300],[600,0,900,300],[0,300,300,600],[300,300,600,600],[600,300,900,600],[0,600,300,900],[300,600,600,900],[600,600,900,900]]
         start_xy = (triggers_on[i[0]-1][0],triggers_on[i[0]-1][1])
         end_xy = (triggers_on[i[2]-1][2],triggers_on[i[2]-1][3])
