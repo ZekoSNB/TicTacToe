@@ -23,10 +23,17 @@ class Rendering:
                 pygame.draw.circle(self.screen, (255,255,255),((trigers_on[i][0]+trigers_on[i][2])/2, (trigers_on[i][1]+trigers_on[i][3])/2),140, 3)
 
     def render_win(self,pos_wi,i):
-        #TODO Not working line | Menu
+        #TODO Menu
         triggers_on = [[0,0,300,300],[300,0,600,300],[600,0,900,300],[0,300,300,600],[300,300,600,600],[600,300,900,600],[0,600,300,900],[300,600,600,900],[600,600,900,900]]
-        start_xy = (triggers_on[i[0]-1][0],triggers_on[i[0]-1][1])
-        end_xy = (triggers_on[i[2]-1][2],triggers_on[i[2]-1][3])
-        pygame.draw.line(self.screen,(0,255,255),(start_xy[0]+ start_xy[0]/4, start_xy[1]), (end_xy[0] - end_xy[0]/4, end_xy[1]), 5)
-        print(start_xy[0])
 
+        for j,item in enumerate(pos_wi):
+            if item == i and j <= 2:
+                start_xy = (triggers_on[i[0]-1][0],triggers_on[i[0]-1][1]+150)
+                end_xy = (triggers_on[i[2]-1][2],triggers_on[i[2]-1][3]-150)
+            elif item == i and j >= 3 and j <= 5:
+                start_xy = (triggers_on[i[0]-1][0]+150,triggers_on[i[0]-1][1])
+                end_xy = (triggers_on[i[2]-1][2]-150,triggers_on[i[2]-1][3])
+            elif item == i and j > 5:
+                start_xy = (triggers_on[i[0]-1][0],triggers_on[i[0]-1][1])
+                end_xy = (triggers_on[i[2]-1][2],triggers_on[i[2]-1][3])
+        pygame.draw.line(self.screen, (0,255,255),start_xy, end_xy , 15)

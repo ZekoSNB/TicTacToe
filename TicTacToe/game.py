@@ -62,11 +62,12 @@ class Game:
                 box = self.mouse.triggered(pygame.mouse.get_pos())
                 if self.turn%2 == 0 and self.grid_index[box] == 'E':
                     self.grid_index[box] = 'X'
+                    self.turn += 1
                 elif self.turn%2 == 1 and self.grid_index[box] == 'E':
                     self.grid_index[box] = 'O'
+                    self.turn += 1
                 else:
                     pass
-                self.turn += 1
                 self.check_win()
                 
     
