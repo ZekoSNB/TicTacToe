@@ -3,7 +3,7 @@ from TicTacToe.game import Game
 
 def main():
     g = Game()
-    g.Loop()
+    g.start_loop()
     return 0
     
 

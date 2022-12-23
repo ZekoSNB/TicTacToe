@@ -5,6 +5,8 @@ class Rendering:
     def __init__(self, width, height,screen) -> None:
         self.WIDTH,self.HEIGHT = width,height
         self.screen = screen
+        self.spfont = pygame.freetype.Font('assets/fonts/oldfont.ttf', 32)
+
     
     def drawGrid(self):
         blockSize = 300 #* Set the size of the grid block
@@ -37,3 +39,8 @@ class Rendering:
                 start_xy = (triggers_on[i[0]-1][0],triggers_on[i[0]-1][1])
                 end_xy = (triggers_on[i[2]-1][2],triggers_on[i[2]-1][3])
         pygame.draw.line(self.screen, (0,255,255),start_xy, end_xy , 15)
+
+    def render_text(self,x,y,text,color):
+        #* Rendering any text 
+        self.spfont.render_to(self.screen, (x,y), text, color)
+ 

@@ -26,6 +26,7 @@ class Game:
         self.turn = 0
         self.pos_i = None
         self.render = Rendering(self.data["WIDTH"],self.data["HEIGHT"], self.screen)
+        
     
     #* Resets data to default for a new game, but the game score is saved
     def restart(self):
@@ -70,7 +71,12 @@ class Game:
                     pass
                 self.check_win()
                 
-    
+    def start_loop(self):
+        while not self.quit:
+            self.events()
+            self.render.render_text(450,450,'zivot je pekny', (255,255,255))
+            pygame.display.flip()
+
     def Loop(self):
         while not self.quit:
             self.screen.fill((0,0,0))
