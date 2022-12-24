@@ -5,7 +5,7 @@ class Rendering:
     def __init__(self, width, height,screen) -> None:
         self.WIDTH,self.HEIGHT = width,height
         self.screen = screen
-        self.spfont = pygame.freetype.Font('assets/fonts/oldfont.ttf', 32)
+        
 
     
     def drawGrid(self):
@@ -40,7 +40,8 @@ class Rendering:
                 end_xy = (triggers_on[i[2]-1][2],triggers_on[i[2]-1][3])
         pygame.draw.line(self.screen, (0,255,255),start_xy, end_xy , 15)
 
-    def render_text(self,x,y,text,color):
+    def render_text(self,x,y,text,color ,size):
         #* Rendering any text 
-        self.spfont.render_to(self.screen, (x,y), text, color)
+        spfont = pygame.freetype.Font('assets/fonts/oldfont.ttf', size)
+        spfont.render_to(self.screen, (x,y), text, color)
  

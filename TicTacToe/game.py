@@ -17,6 +17,7 @@ class Game:
         self.screen = pygame.display.set_mode((self.data["WIDTH"], self.data["HEIGHT"]))
         self.quit = False
         self.win = False
+        self.inmenu = True
         self.win_state = [[1,2,3],[4,5,6],[7,8,9], [1,4,7], [2,5,8],[3,6,9],[1,5,9],[3,5,7]]
         self.mouse = Mouse()
         #* This indicates whether the square is empty or there is X or O
@@ -59,7 +60,7 @@ class Game:
                     self.quit = True
 
             #* If the mouse button is pressed (any button) the function will find which square it is located 
-            if event.type == pygame.MOUSEBUTTONDOWN and not self.win:
+            if event.type == pygame.MOUSEBUTTONDOWN and not self.win and not self.inmenu:
                 box = self.mouse.triggered(pygame.mouse.get_pos())
                 if self.turn%2 == 0 and self.grid_index[box] == 'E':
                     self.grid_index[box] = 'X'
@@ -74,7 +75,9 @@ class Game:
     def start_loop(self):
         while not self.quit:
             self.events()
-            self.render.render_text(450,450,'zivot je pekny', (255,255,255))
+            self.render.render_text((self.data["WIDTH"]/4-64), (self.data["HEIGHT"]/2), 'ONE PLAYER', (255,255,255),32)
+            self.render.render_text((self.data["WIDTH"]/2+64),self.data["HEIGHT"]/2, 'TWO PLAYERS',(255,255,255),32)
+            self.render.render_text((self.data["WIDTH"]/4+10),self.data["HEIGHT"]/6,'TIC TAC TOE', (255,255,255),64)
             pygame.display.flip()
 
     def Loop(self):
