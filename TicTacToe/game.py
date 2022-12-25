@@ -77,7 +77,7 @@ class Game:
             self.events()
             self.render.render_text((self.data["WIDTH"]/4-64), (self.data["HEIGHT"]/2), 'ONE PLAYER', (255,255,255),32)
             self.render.render_text((self.data["WIDTH"]/2+64),self.data["HEIGHT"]/2, 'TWO PLAYERS',(255,255,255),32)
-            self.render.render_text((self.data["WIDTH"]/4+10),self.data["HEIGHT"]/6,'TIC TAC TOE', (255,255,255),64)
+            self.render.render_text((self.data["WIDTH"]/4+10  ),self.data["HEIGHT"]/6,'TIC TAC TOE', (255,255,255),64)
             pygame.display.flip()
 
     def Loop(self):
