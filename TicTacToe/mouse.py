@@ -1,4 +1,4 @@
-
+import pygame
 
 class Mouse():
     def __init__(self) -> None:
@@ -10,4 +10,7 @@ class Mouse():
         for i,item in enumerate(trigers_on):
             if self.mx > item[0] and self.mx < item[2] and self.my > item[1] and self.my < item[3]:
                 return i
+    def hover_on(self, x,y, text):
+        if x <= text.get_width():
+            pass
         

@@ -44,4 +44,6 @@ class Rendering:
         #* Rendering any text 
         spfont = pygame.freetype.Font('assets/fonts/oldfont.ttf', size)
         spfont.render_to(self.screen, (x,y), text, color)
+        
+        
  
