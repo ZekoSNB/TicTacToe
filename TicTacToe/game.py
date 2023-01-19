@@ -19,7 +19,7 @@ class Game:
         self.win = False
         self.inmenu = True
         self.win_state = [[1,2,3],[4,5,6],[7,8,9], [1,4,7], [2,5,8],[3,6,9],[1,5,9],[3,5,7]]
-        self.mouse = Mouse()
+        self.mouse = Mouse(self.screen)
         #* This indicates whether the square is empty or there is X or O
         #* E = Empty | 
         self.grid_index = ['E','E','E','E','E','E','E','E','E']
@@ -75,6 +75,7 @@ class Game:
     def start_loop(self):
         while not self.quit:
             self.events()
+            self.mouse.hover_on(self.data["WIDTH"], self.data["HEIGHT"])
             self.render.render_text((self.data["WIDTH"]/4-64), (self.data["HEIGHT"]/2), 'ONE PLAYER', (255,255,255),32)
             self.render.render_text((self.data["WIDTH"]/2+64),self.data["HEIGHT"]/2, 'TWO PLAYERS',(255,255,255),32)
             self.render.render_text((self.data["WIDTH"]/4+10  ),self.data["HEIGHT"]/6,'TIC TAC TOE', (255,255,255),64)

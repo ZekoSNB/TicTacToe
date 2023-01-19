@@ -1,8 +1,9 @@
 import pygame
 
 class Mouse():
-    def __init__(self) -> None:
+    def __init__(self, screen) -> None:
         super().__init__()
+        self.screen = screen
     
     def triggered(self,pos):
         self.mx,self.my = pos
@@ -10,7 +11,6 @@ class Mouse():
         for i,item in enumerate(trigers_on):
             if self.mx > item[0] and self.mx < item[2] and self.my > item[1] and self.my < item[3]:
                 return i
-    def hover_on(self, x,y, text):
-        if x <= text.get_width():
-            pass
+    def hover_on(self, width,height):
+        pygame.draw.line(self.screen,(255,255,255,),((width/2+64),(height/2-30),), ((width/2+64+32*7.2),(height/2-30)), 4)
         
