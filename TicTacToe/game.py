@@ -61,7 +61,7 @@ class Game:
 
             #* If the mouse button is pressed (any button) the function will find which square it is located 
             if event.type == pygame.MOUSEBUTTONDOWN and not self.win and not self.inmenu:
-                box = self.mouse.triggered(pygame.mouse.get_pos())
+                box = self.mouse.triggered()
                 if self.turn%2 == 0 and self.grid_index[box] == 'E':
                     self.grid_index[box] = 'X'
                     self.turn += 1
