@@ -38,10 +38,6 @@ class Game:
         self.grid_index = ['E','E','E','E','E','E','E','E','E']
         self.win = False
 
-    def random_field(self):
-        random = random.randint(0,8)
-
-
     #* Iterates through loop and checks and checks for the same positions
     def check_win(self):
         win_state = [[1,2,3],[4,5,6],[7,8,9], [1,4,7], [2,5,8],[3,6,9],[1,5,9],[3,5,7]]
@@ -61,7 +57,7 @@ class Game:
                     self.turn += 1
         else:
             pass
-        print(self.player_state)
+        
         for event in pygame.event.get():
             
             #* Checks if the close button is pressed
@@ -88,7 +84,7 @@ class Game:
 
                 else:
                     pass
-            
+           # Checks when mouse is pressed and if the game is being played and whethre the player is playing one or two player game 
             if event.type == pygame.MOUSEBUTTONDOWN and not self.win and not self.inmenu and self.player_state == 2:
                 box = self.mouse.triggered()
                 
@@ -100,10 +96,10 @@ class Game:
                     self.grid_index[box] = 'O'
                     self.turn += 1
                 else:
-                    pass
-                
-            
+                    pass 
+                # Checks if the game is won by player X || O and draws line across the winning combination
                 self.check_win()
+
             if event.type == pygame.MOUSEBUTTONDOWN and self.start and self.inmenu:
                 if self.but_ind == 0:
                     self.start = False
@@ -144,8 +140,6 @@ class Game:
             #* Button two for two player but_ind - 1
             self.render.render_text((self.data["WIDTH"]/2+64),self.data["HEIGHT"]/2, 'TWO PLAYERS', text_2_col,32)
 
-
-
             self.render.render_text((self.data["WIDTH"]/4+10  ),self.data["HEIGHT"]/6,'TIC TAC TOE', (255,255,255),64)
             pygame.display.flip()
 
@@ -173,6 +167,7 @@ class Game:
             self.render.drawGrid()
             #* Renders players X or O
             self.render.render_grid(self.grid_index)
+            self.check_win()
             pygame.display.update()
                 
             
