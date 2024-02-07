@@ -1,5 +1,5 @@
  #* Importing libraries that are used in this game
-import pygame,json
+import pygame,json, sys
 from TicTacToe.mouse import Mouse
 from TicTacToe.render import Rendering
 import random
@@ -62,7 +62,7 @@ class Game:
             
             #* Checks if the close button is pressed
             if event.type == pygame.QUIT:
-                self.quit = True
+                sys.exit()
 
             #* Checks if the keyboard is pressed and which key to call function/change variable
             if event.type == pygame.KEYDOWN:
@@ -71,7 +71,7 @@ class Game:
                     self.restart()
 
                 if event.key == pygame.K_ESCAPE:
-                    self.quit = True
+                    sys.exit()
 
             #* If the mouse button is pressed (any button) the function will find which square it is located 
             if event.type == pygame.MOUSEBUTTONDOWN and not self.win and not self.inmenu and self.player_state == 1:
@@ -82,8 +82,6 @@ class Game:
                     self.grid_index[box] = 'X'
                     self.turn += 1
 
-                else:
-                    pass
            # Checks when mouse is pressed and if the game is being played and whethre the player is playing one or two player game 
             if event.type == pygame.MOUSEBUTTONDOWN and not self.win and not self.inmenu and self.player_state == 2:
                 box = self.mouse.triggered()
@@ -95,8 +93,7 @@ class Game:
                 elif self.turn%2 == 1 and self.grid_index[box] == 'E':
                     self.grid_index[box] = 'O'
                     self.turn += 1
-                else:
-                    pass 
+
                 # Checks if the game is won by player X || O and draws line across the winning combination
                 self.check_win()
 

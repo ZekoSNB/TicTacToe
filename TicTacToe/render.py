@@ -7,6 +7,8 @@ class Rendering:
         self.screen = screen
     
     def drawGrid(self):
+        #Draws a grid on the screen using pygame.draw.rect
+
         blockSize = 300 #* Set the size of the grid block
         for x in range(0, self.WIDTH , blockSize):
             for y in range(0, self.HEIGHT, blockSize):
@@ -14,6 +16,7 @@ class Rendering:
                 pygame.draw.rect(self.screen, (255,255,255), rect, 1)
     
     def render_grid(self, grid):
+        # Renders the player's moves on the grid
         trigers_on = [[0,0,300,300],[300,0,600,300],[600,0,900,300],[0,300,300,600],[300,300,600,600],[600,300,900,600],[0,600,300,900],[300,600,600,900],[600,600,900,900]]
         for i,item in enumerate(grid):
             if item == 'X':
@@ -23,19 +26,26 @@ class Rendering:
                 pygame.draw.circle(self.screen, (255,255,255),((trigers_on[i][0]+trigers_on[i][2])/2, (trigers_on[i][1]+trigers_on[i][3])/2),140, 3)
 
     def render_win(self,pos_wi,i):
-        triggers_on = [[0,0,300,300],[300,0,600,300],[600,0,900,300],[0,300,300,600],[300,300,600,600],[600,300,900,600],[0,600,300,900],[300,600,600,900],[600,600,900,900]]
+            
+            # Renders a line on the screen to indicate a winning combination in the Tic Tac Toe game.
 
-        for j,item in enumerate(pos_wi):
-            if item == i and j <= 2:
-                start_xy = (triggers_on[i[0]-1][0],triggers_on[i[0]-1][1]+150)
-                end_xy = (triggers_on[i[2]-1][2],triggers_on[i[2]-1][3]-150)
-            elif item == i and j >= 3 and j <= 5:
-                start_xy = (triggers_on[i[0]-1][0]+150,triggers_on[i[0]-1][1])
-                end_xy = (triggers_on[i[2]-1][2]-150,triggers_on[i[2]-1][3])
-            elif item == i and j > 5:
-                start_xy = (triggers_on[i[0]-1][0],triggers_on[i[0]-1][1])
-                end_xy = (triggers_on[i[2]-1][2],triggers_on[i[2]-1][3])
-        pygame.draw.line(self.screen, (0,255,255),start_xy, end_xy , 15)
+            # Parameters:
+            # - pos_wi (list): List of positions indicating the winning combination.
+            # - i (int): Index of the winning combination.
+            
+            triggers_on = [[0,0,300,300],[300,0,600,300],[600,0,900,300],[0,300,300,600],[300,300,600,600],[600,300,900,600],[0,600,300,900],[300,600,600,900],[600,600,900,900]]
+
+            for j,item in enumerate(pos_wi):
+                if item == i and j <= 2:
+                    start_xy = (triggers_on[i[0]-1][0],triggers_on[i[0]-1][1]+150)
+                    end_xy = (triggers_on[i[2]-1][2],triggers_on[i[2]-1][3]-150)
+                elif item == i and j >= 3 and j <= 5:
+                    start_xy = (triggers_on[i[0]-1][0]+150,triggers_on[i[0]-1][1])
+                    end_xy = (triggers_on[i[2]-1][2]-150,triggers_on[i[2]-1][3])
+                elif item == i and j > 5:
+                    start_xy = (triggers_on[i[0]-1][0],triggers_on[i[0]-1][1])
+                    end_xy = (triggers_on[i[2]-1][2],triggers_on[i[2]-1][3])
+            pygame.draw.line(self.screen, (0,255,255),start_xy, end_xy , 15)
 
     def render_text(self,x,y,text,color ,size):
         #* Rendering any text 
